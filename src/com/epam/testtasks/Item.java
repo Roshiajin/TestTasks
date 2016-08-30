@@ -3,8 +3,28 @@ package com.epam.testtasks;
 import java.util.List;
 
 public class Item {
-	
-	private Long itemId; 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Item item = (Item) o;
+
+		if (!itemId.equals(item.itemId)) return false;
+		if (name != null ? !name.equals(item.name) : item.name != null) return false;
+		return desc != null ? desc.equals(item.desc) : item.desc == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = itemId.hashCode();
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (desc != null ? desc.hashCode() : 0);
+		return result;
+	}
+
+	private Long itemId;
 	private String name; 
 	private String desc;
 
@@ -33,18 +53,4 @@ public class Item {
 		this.desc = desc;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		boolean isEqual = false;
-		
-		if (this.getClass() == obj.getClass()) {
-			Item item = (Item) obj;
-			isEqual = (item.itemId != null ? item.itemId.equals(this.itemId) : item.itemId == null) &&
-					(item.name != null ? item.name.equals(this.name) : item.name == null) &&
-					(item.desc != null ? item.desc.equals(this.desc) : item.desc == null);
-		}
-		
-		return isEqual;
-	}
-
 }
