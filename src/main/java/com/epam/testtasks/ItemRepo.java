@@ -1,4 +1,4 @@
-package epam.testtasks;
+package com.epam.testtasks;
 
 import java.util.List;
 
