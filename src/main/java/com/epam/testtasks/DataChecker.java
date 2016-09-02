@@ -16,5 +16,4 @@ public class DataChecker {
         else return !itemsFromUI.containsAll(itemsFromRepo);
 
 	}
-	
 }
